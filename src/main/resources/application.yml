@@ -19,10 +19,6 @@ spring:
 
 zuul:
   routes:
-    hope-project:
-      path: /hope/**
-      serviceId: hope-project
-      sensitiveHeaders:
     auth-center:
       path: /common/**
       serviceId: auth-center
