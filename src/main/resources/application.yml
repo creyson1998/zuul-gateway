@@ -1,0 +1,40 @@
+filter:
+ ignores: /common/
+
+#服务注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+  instance:
+    appname: api-gateway
+
+#设置网关端口号
+server:
+  port: 8082
+
+spring:
+  application:
+    name: api-getway
+
+zuul:
+  routes:
+    hope-project:
+      path: /hope/**
+      serviceId: hope-project
+      sensitiveHeaders:
+    auth-center:
+      path: /common/**
+      serviceId: auth-center
+      sensitiveHeaders:
+    course:
+      path: /course/**
+      url: http://test.admin.xiwangjia.cn/
+      sensitiveHeaders:
+      stripPrefix: false
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+  eureka:
+    enabled: true
+
